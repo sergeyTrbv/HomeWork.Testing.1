@@ -11,6 +11,9 @@ class UserTest {
     private static String mail;
     private static String login;
 
+    private UserTest() {
+    }
+
     @BeforeAll
     private static void initParams() {
         System.out.println("Start");
@@ -19,6 +22,7 @@ class UserTest {
     }
 
     static User user = new User(mail, login);
+    static User userNull;
 
     //Создайте тест, который выполнит тестирование создания объекта User с передачей в него двух параметров. Такая функция лишь должна проверять устанавливаются ли данные при создании объекта;
     @Test
@@ -31,12 +35,14 @@ class UserTest {
     //Создайте аналогичный тест, который выполнит тестирование по созданию объекта без передачи в него параметров;
     @Test
     void checkingObjectInitializationWithoutParameters() {
+        Assertions.assertNull(userNull);
     }
 
     //Создайте тест, который протестирует установлен ли корректный Email адрес в поле email в классе User. Некорректным будет считаться тот email, в котором нет знака @ или же знака точки
     @Test
     void thePresenceOfASignInTheObject() {
-        Assertions.assertTrue(user.validateChar(mail));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> ;
     }
 
     //Создайте тест, который определяет, равны ли login и email (Они не должны быть равны).

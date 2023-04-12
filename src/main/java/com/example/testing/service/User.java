@@ -1,5 +1,7 @@
 package com.example.testing.service;
 
+import java.io.IOException;
+
 public class User {
 
     public String mail = "abc@skypro.ru";
@@ -7,7 +9,11 @@ public class User {
 
 
     public User(String mail, String login) {
-        this.mail = mail;
+        if (!User.validateChar(mail)) {
+            throw new IllegalArgumentException("Email " + mail + "Не содержит знака собака");
+        } else {
+            this.mail = mail;
+        }
         this.login = login;
     }
 
