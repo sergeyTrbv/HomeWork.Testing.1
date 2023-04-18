@@ -1,11 +1,11 @@
 package com.example.testing.service;
 
-import java.io.IOException;
+
 
 public class User {
 
-    public String mail = "abc@skypro.ru";
-    public String login = "log";
+    public String mail;
+    public String login;
 
 
     public User(String mail, String login) {
@@ -13,8 +13,12 @@ public class User {
             throw new IllegalArgumentException("Email " + mail + "Не содержит знака собака");
         } else {
             this.mail = mail;
+        }if (login.equals(mail)){
+            throw new IllegalArgumentException("Email " + mail + " не может быть равен Login "+ login);
         }
         this.login = login;
+    }
+    public User(){
     }
 
     public String getMail() {
