@@ -4,12 +4,12 @@ package com.example.testing.service;
 
 public class User {
 
-    public String mail;
-    public String login;
+    private String mail;
+    private String login;
 
 
     public User(String mail, String login) {
-        if (!User.validateChar(mail)) {
+        if (!validateChar(mail)) {
             throw new IllegalArgumentException("Email " + mail + "Не содержит знака собака");
         } else {
             this.mail = mail;
@@ -29,7 +29,7 @@ public class User {
         return login;
     }
 
-    public static boolean validateChar(String value) {
+    public boolean validateChar(String value) {
         String symbol = "@";
         for (int i = 0; i < value.length(); i++) {
             if (value.contains(symbol)) {

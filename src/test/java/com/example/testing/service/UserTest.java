@@ -8,17 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
-    private static String mail;
-    private static String login;
 
-    private UserTest() {
-    }
 
     @BeforeAll
     private static void initParams() {
         System.out.println("Start");
-        mail = "abc@skypro.ru";
-        login = "log";
+        String mail = "abc@skypro.ru";
+        String login = "log";
     }
 
 
@@ -39,21 +35,23 @@ class UserTest {
     }
 
 
-
-  //  Создайте тест, который протестирует установлен ли корректный Email адрес в поле email в классе User. Некорректным будет считаться тот email, в котором нет знака @ или же знака точки
+    //  Создайте тест, который протестирует установлен ли корректный Email адрес в поле email в классе User. Некорректным будет считаться тот email, в котором нет знака @ или же знака точки
     @Test
     void thePresenceOfASignInTheObject() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new User("login", "email"));
     }
 
     //Создайте тест, который определяет, равны ли login и email (Они не должны быть равны).
+//    @Test
+//    void comparingLoginAndMail() {
+//        mail = "abc@skypro.ru";
+//        login = "log";
+//        Assertions.assertNotEquals(mail, login);
+//    }
     @Test
     void comparingLoginAndMail() {
-        mail = "abc@skypro.ru";
-        login = "log";
-        Assertions.assertNotEquals(mail, login);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new User("abc@skypro.ru", "abc@skypro.ru"));
     }
-
 
 
 }
